@@ -3,20 +3,23 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Kanban Task Board</title>
-<!-- Include styles directly for simplicity -->
+<title>Kanban Board</title>
 <style>
+  /* Reset and base styles */
   body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
+    background: #f0f4f8;
     padding: 20px;
-    background-color: #f0f4f8;
   }
+
   h1 {
     text-align: center;
     font-size: 2rem;
     margin-bottom: 10px;
   }
+
+  /* Header button */
   #addTaskBtn {
     background-color: #5c6bc0;
     color: #fff;
@@ -25,32 +28,46 @@
     border-radius: 8px;
     cursor: pointer;
     font-weight: 600;
-    font-size: 1rem;
-    transition: background-color 0.3s;
     margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
   #addTaskBtn:hover {
     background-color: #3949ab;
   }
+
+  /* Columns layout */
   .columns {
     display: flex;
     gap: 1rem;
     flex-wrap: nowrap;
   }
+  @media(max-width: 600px) {
+    .columns {
+      flex-direction: column;
+    }
+  }
+
+  /* Individual column styles */
   .column {
     flex: 1;
-    background-color: #fff;
+    background: #fff;
     border-radius: 8px;
     padding: 1rem;
     min-height: 300px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   }
   .column h2 {
     text-align: center;
     margin-bottom: 10px;
     font-size: 1.2rem;
+    color: #555;
   }
+
+  /* Task card styles */
   .task {
-    background-color: #fff;
+    background: #fff;
     border-radius: 8px;
     padding: 10px;
     margin-bottom: 10px;
@@ -59,10 +76,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    transition: background-color 0.2s;
+    transition: background 0.2s;
   }
   .task:hover {
-    background-color: #f9f9f9;
+    background: #f9f9f9;
   }
   .task-title {
     display: flex;
@@ -80,6 +97,7 @@
   .todo { background-color: #a8d0e6; }
   .doing { background-color: #b39ddb; }
   .done { background-color: #aed581; }
+
   /* Modal styles */
   .modal {
     position: fixed;
@@ -91,9 +109,7 @@
     background-color: rgba(0,0,0,0.5);
     z-index: 1000;
   }
-  .hidden {
-    display: none;
-  }
+  .hidden { display: none; }
   .modal-backdrop {
     position: absolute;
     width: 100%; height: 100%;
@@ -148,11 +164,6 @@
     resize: vertical;
     min-height: 80px;
   }
-  @media(max-width: 600px) {
-    .columns {
-      flex-direction: column;
-    }
-  }
 </style>
 </head>
 <body>
@@ -174,7 +185,7 @@
   </div>
 </div>
 
-<!-- Modal for viewing/editing task -->
+<!-- Modal for editing task -->
 <div id="taskModal" class="modal hidden">
   <div class="modal-backdrop"></div>
   <div class="modal-content">
@@ -193,9 +204,3 @@
     <button id="saveTask" class="save-btn">Save</button>
   </div>
 </div>
-
-<!-- Include scripts -->
-<script src="initialData.js"></script>
-<script src="script.js"></script>
-</body>
-</html>
