@@ -6,6 +6,54 @@
     <title>Document</title>
 </head>
 <body>
+    <!-- Sidebar -->
+  <aside>
+    <!-- sidebar content -->
+  </aside>
+
+  <!-- Main Kanban Board -->
+  <main>
+
+    <section id="todo-column"></section>
+
+    <section id="doing-column"></section>
+
+    <section id="done-column"></section>
+
+  </main>
+
+
+  <!-- MODAL GOES HERE -->
+  <div id="task-modal" class="modal">
+
+    <div class="modal-content">
+
+      <button id="close-modal">X</button>
+
+      <h2>Edit Task</h2>
+
+      <input
+        id="task-title"
+        type="text"
+        placeholder="Task title"
+      />
+
+      <textarea
+        id="task-desc"
+        placeholder="Task description"
+      ></textarea>
+
+      <select id="task-status">
+        <option value="todo">To Do</option>
+        <option value="doing">In Progress</option>
+        <option value="done">Done</option>
+      </select>
+
+      <button id="save-task">
+        Save Changes
+      </button>
+    </div>
+  </div>
 <script src="js/data.js"></script>
 <script src="js/render.js"></script>
 <script src="js/modal.js"></script>
