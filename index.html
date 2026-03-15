@@ -1,65 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kanban Board</title>
-
-  <link rel="stylesheet" href="css/styles.css">
-</head></title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kanban Board</title>
+<link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <!-- Sidebar -->
-  <aside>
-    <!-- sidebar content -->
-  </aside>
 
-  <!-- Main Kanban Board -->
-  <main>
+<h1 class="title">Kanban Task Board</h1>
 
-    <section id="todo-column"></section>
+<div class="header">
+  <button id="addTaskBtn">Add New Task</button>
+</div>
 
-    <section id="doing-column"></section>
-
-    <section id="done-column"></section>
-
-  </main>
-
-
-  <!-- MODAL GOES HERE -->
-  <div id="task-modal" class="modal">
-
-    <div class="modal-content">
-
-      <button id="close-modal">X</button>
-
-      <h2>Edit Task</h2>
-
-      <input
-        id="task-title"
-        type="text"
-        placeholder="Task title"
-      />
-
-      <textarea
-        id="task-desc"
-        placeholder="Task description"
-      ></textarea>
-
-      <select id="task-status">
-        <option value="todo">To Do</option>
-        <option value="doing">In Progress</option>
-        <option value="done">Done</option>
-      </select>
-
-      <button id="save-task">
-        Save Changes
-      </button>
-    </div>
+<div class="columns">
+  <div class="column" id="todo-column">
+    <h2>TO DO</h2>
+    <!-- Tasks will appear here -->
   </div>
-<script src="js/data.js"></script>
-<script src="js/render.js"></script>
-<script src="js/modal.js"></script>
-<script src="js/app.js"></script>
+  <div class="column" id="doing-column">
+    <h2>DOING</h2>
+    <!-- Tasks will appear here -->
+  </div>
+  <div class="column" id="done-column">
+    <h2>DONE</h2>
+    <!-- Tasks will appear here -->
+  </div>
+</div>
+
+<!-- Modal for viewing/editing task -->
+<div id="taskModal" class="modal hidden">
+  <div class="modal-backdrop"></div>
+  <div class="modal-content">
+    <button id="closeModal" class="close-btn">&times;</button>
+    <h2>Edit Task</h2>
+    <label>Title</label>
+    <input type="text" id="taskTitle" />
+    <label>Description</label>
+    <textarea id="taskDescription"></textarea>
+    <label>Status</label>
+    <select id="taskStatus">
+      <option value="To Do">To Do</option>
+      <option value="In Progress">In Progress</option>
+      <option value="Done">Done</option>
+    </select>
+    <button id="saveTask" class="save-btn">Save</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
