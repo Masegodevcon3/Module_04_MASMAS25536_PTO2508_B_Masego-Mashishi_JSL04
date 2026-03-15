@@ -1,3 +1,5 @@
+// Use the data from initialData.js
+const tasks = [...window.initialTasks];
 const tasks = [
   { id: 1, title: "Design Homepage", description: "Create initial designs", status: "To Do" },
   { id: 2, title: "Develop API", description: "Build REST API", status: "In Progress" },
