@@ -1,40 +1,86 @@
 # JSL04 Project Brief: Dynamic Task Display & Modal View
+# Kanban Task Board
 
-## Overview
+A sleek, responsive, and fully functional Kanban board built with vanilla HTML, CSS, and JavaScript. Designed to help you organize tasks visually and efficiently, inspired by modern project management tools and tailored to match a professional Figma design.
 
-In this project, you will dynamically display tasks from the **given initial data** on the DOM using JavaScript. Tasks should be placed into the correct **Kanban board columns** based on their status, and clicking a task should open a **modal** where users can view and modify task details. The project emphasizes **DOM manipulation, event handling, modular JavaScript structure, and responsive UI implementation.**
+---
 
-## Before You Begin
+## Features
 
-**Check the project user stories in your student dashboard and the updated Figma Design** before you start building.
+- **Responsive Layout:** Works seamlessly on desktops and mobile devices.
+- **Clean & Modern UI:** Rounded corners, shadows, color-coded task statuses, and smooth hover effects.
+- **Create & Edit Tasks:** Easily add new tasks and update existing ones via a modal interface.
+- **Status Columns:** Categorize tasks into *To Do*, *Doing*, and *Done* columns.
+- **Dynamic Data Loading:** Initializes with a predefined dataset, with easy scalability.
+- **Intuitive Interactions:** Click tasks to view details, edit, and save changes instantly.
+- **Extensible:** Built with vanilla JS, making it easy to extend with features like drag-and-drop, persistence, or custom styling.
 
-## Figma Design Link
+---
 
-Check the updated Figma Design: [Figma Link](https://www.figma.com/design/y7bFCUYL5ZHfPeojACBXg2/Challenges-%7C-JSL?node-id=0-1&p=f&t=Ki0CZk0RAjrk9Fhs-0)
+## Demo
 
-## Key Objectives
+Open the project in your browser via [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) or simply double-click `index.html`.
 
-### Dynamic Task Display & Interaction
+---
 
-- Dynamically generate **task elements** from the given initial data and insert them into the DOM.
-- Ensure tasks are placed in the **correct columns** ("To Do", "In Progress", "Done") based on their status.
-- Clicking a task should **open a modal** displaying its details.
-- The modal should include:
-  - **Editable input fields** for the task title and description.
-  - **A select dropdown** showing the current status with other status options available.
-  - **A close button** that allows users to exit the modal easily.
+## Setup & Usage
 
-### Design & Responsiveness
+1. **Clone or download the repository.**
+2. **Ensure all files (`index.html`, `initialData.js`, `script.js`) are in the same folder.**
+3. **Open `index.html` in your browser** to start managing tasks immediately.
 
-- Ensure the **modal matches the Figma design**, including a **backdrop effect** for focus.
-- Implement a **fully responsive modal** that works on both desktop and mobile devices.
+---
 
-### Code Structure & Maintainability
+## File Structure
 
-- Structure JavaScript using **modular, single-responsibility functions**.
-- Use **descriptive and meaningful variable and function names** for clarity.
-- Add **JSDoc comments** to major functions, describing their purpose, parameters, and return values for better documentation.
+- `index.html` — The main HTML structure and styling.
+- `initialData.js` — Contains the initial set of tasks.
+- `script.js` — JavaScript logic for rendering, editing, and interacting with tasks.
 
-## Expected Outcome
+---
 
-A fully functional **dynamic task board** where tasks appear under the correct columns, and users can **open a modal to view/edit** task details. The project will follow **clean, well-documented, and maintainable code practices**, ensuring a professional and scalable implementation.
+## Customization
+
+- Modify `initialData.js` to load your own tasks.
+- Customize styles in `<style>` tags within `index.html` to match your branding.
+- Extend functionality with features like drag-and-drop, task priorities, or data persistence.
+
+---
+
+## Future Enhancements
+
+- **Drag-and-Drop:** Move tasks between columns by dragging.
+- **Persistence:** Save tasks locally with `localStorage` or remotely via API.
+- **Task Details:** Expand modal for more details, comments, or attachments.
+- **User Management:** Support multiple users or team collaboration.
+- **Notifications & Reminders**
+
+---
+
+## Contributing
+
+Feel free to fork, customize, and improve this project! Pull requests and issue reports are welcome.
+
+---
+
+## License
+
+This project is open-source and available under the MIT License.
+
+---
+
+## Acknowledgments
+
+- Inspired by modern project management tools.
+- Designed to match a specific Figma layout for a professional look.
+- Built with love in vanilla HTML, CSS, and JavaScript.
+
+---
+
+## Contact
+
+For questions or suggestions, open an issue or contact me at [your.email@example.com].
+
+---
+
+Happy task managing! 🚀
