@@ -5,174 +5,157 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Kanban Board</title>
 <style>
-  /* Reset and base styles */
-  body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    background: #f0f4f8;
-    padding: 20px;
-  }
-
-  h1 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 10px;
-  }
-
-  /* Header button */
-  #addTaskBtn {
-    background-color: #5c6bc0;
-    color: #fff;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    margin-bottom: 20px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  #addTaskBtn:hover {
-    background-color: #3949ab;
-  }
-
-  /* Columns layout */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  background: #f0f4f8;
+  padding: 20px;
+}
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+#addTaskBtn {
+  background-color: #5c6bc0;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  margin: 0 auto 20px auto;
+  display: block;
+}
+#addTaskBtn:hover {
+  background-color: #3949ab;
+}
+.columns {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: nowrap;
+}
+@media(max-width: 600px) {
   .columns {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: nowrap;
+    flex-direction: column;
   }
-  @media(max-width: 600px) {
-    .columns {
-      flex-direction: column;
-    }
-  }
-
-  /* Individual column styles */
-  .column {
-    flex: 1;
-    background: #fff;
-    border-radius: 8px;
-    padding: 1rem;
-    min-height: 300px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  }
-  .column h2 {
-    text-align: center;
-    margin-bottom: 10px;
-    font-size: 1.2rem;
-    color: #555;
-  }
-
-  /* Task card styles */
-  .task {
-    background: #fff;
-    border-radius: 8px;
-    padding: 10px;
-    margin-bottom: 10px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    transition: background 0.2s;
-  }
-  .task:hover {
-    background: #f9f9f9;
-  }
-  .task-title {
-    display: flex;
-    align-items: center;
-    font-weight: 600;
-    font-size: 1rem;
-  }
-  .status-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    margin-left: 8px;
-  }
-  /* Status colors */
-  .todo { background-color: #a8d0e6; }
-  .doing { background-color: #b39ddb; }
-  .done { background-color: #aed581; }
-
-  /* Modal styles */
-  .modal {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(0,0,0,0.5);
-    z-index: 1000;
-  }
-  .hidden { display: none; }
-  .modal-backdrop {
-    position: absolute;
-    width: 100%; height: 100%;
-  }
-  .modal-content {
-    position: relative;
-    background: #fff;
-    border-radius: 8px;
-    padding: 20px;
-    width: 90%;
-    max-width: 400px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    z-index: 1001;
-  }
-  .close-btn {
-    position: absolute;
-    top: 10px; right: 10px;
-    background: transparent;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: #999;
-  }
-  .save-btn {
-    width: 100%;
-    padding: 0.75rem 1.2rem;
-    margin-top: 15px;
-    background-color: #7b61ff;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    cursor: pointer;
-  }
-  .save-btn:hover {
-    background-color: #5a3dcc;
-  }
-  label {
-    display: block;
-    margin-top: 10px;
-    margin-bottom: 5px;
-    font-weight: 600;
-  }
-  input[type="text"], textarea, select {
-    width: 100%;
-    padding: 8px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    font-size: 1rem;
-  }
-  textarea {
-    resize: vertical;
-    min-height: 80px;
-  }
+}
+.column {
+  flex: 1;
+  background: #fff;
+  border-radius: 8px;
+  padding: 1rem;
+  min-height: 300px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.column h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  color: #555;
+}
+.task {
+  background: #fff;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background 0.2s;
+}
+.task:hover {
+  background: #f9f9f9;
+}
+.task-title {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1rem;
+}
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-left: 8px;
+}
+.todo { background-color: #a8d0e6; }
+.doing { background-color: #b39ddb; }
+.done { background-color: #aed581; }
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 1000;
+}
+.hidden {
+  display: none;
+}
+.modal-backdrop {
+  position: absolute;
+  width: 100%; height: 100%;
+}
+.modal-content {
+  position: relative;
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 1001;
+}
+.close-btn {
+  position: absolute;
+  top: 10px; right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #999;
+}
+.save-btn {
+  width: 100%;
+  padding: 0.75rem 1.2rem;
+  margin-top: 15px;
+  background-color: #7b61ff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.save-btn:hover {
+  background-color: #5a3dcc;
+}
+label {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+input[type="text"], textarea, select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
 </style>
 </head>
 <body>
-
 <h1>Kanban Task Board</h1>
-<div class="header">
-  <button id="addTaskBtn">Add New Task</button>
-</div>
-
+<button id="addTaskBtn">Add New Task</button>
 <div class="columns">
   <div class="column" id="todo-column">
     <h2>TO DO</h2>
@@ -185,7 +168,7 @@
   </div>
 </div>
 
-<!-- Modal for editing task -->
+<!-- Modal -->
 <div id="taskModal" class="modal hidden">
   <div class="modal-backdrop"></div>
   <div class="modal-content">
@@ -204,16 +187,13 @@
     <button id="saveTask" class="save-btn">Save</button>
   </div>
 </div>
-
 <!-- Scripts -->
 <script src="initialData.js"></script>
 <script>
-  // JavaScript code for handling tasks and modal interactions will go here
- // Load initial tasks
+  // Load data
   const tasks = [...window.initialTasks];
 
   let currentTaskId = null;
-
   const todoColumn = document.getElementById('todo-column');
   const doingColumn = document.getElementById('doing-column');
   const doneColumn = document.getElementById('done-column');
@@ -227,7 +207,6 @@
   const saveBtn = document.getElementById('saveTask');
   const addTaskBtn = document.getElementById('addTaskBtn');
 
-  // Render tasks
   function renderTasks() {
     [todoColumn, doingColumn, doneColumn].forEach(col => col.innerHTML = '');
 
@@ -257,34 +236,30 @@
     });
   }
 
-  // Open modal
   function openModal(id) {
     currentTaskId = id;
     const task = tasks.find(t => t.id === id);
     if (!task) return;
     taskTitleInput.value = task.title;
-    taskDescInput.value = task.description;
+    taskDescription.value = task.description;
     taskStatusSelect.value = task.status;
     taskModal.classList.remove('hidden');
   }
 
-  // Close modal
   function closeModal() {
     taskModal.classList.add('hidden');
   }
 
-  // Save task
   function saveTask() {
     const task = tasks.find(t => t.id === currentTaskId);
     if (!task) return;
     task.title = taskTitleInput.value;
-    task.description = taskDescInput.value;
+    task.description = taskDescription.value;
     task.status = taskStatusSelect.value;
     renderTasks();
     closeModal();
   }
 
-  // Add new task
   addTaskBtn.addEventListener('click', () => {
     const newId = Math.max(0, ...tasks.map(t => t.id)) + 1;
     const newTask = {
@@ -298,7 +273,6 @@
     openModal(newId);
   });
 
-  // Event listeners
   document.getElementById('closeModal').addEventListener('click', closeModal);
   document.querySelector('.modal-backdrop').addEventListener('click', closeModal);
   saveBtn.addEventListener('click', saveTask);
